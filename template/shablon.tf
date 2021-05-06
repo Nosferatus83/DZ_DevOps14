@@ -7,21 +7,6 @@ terraform {
   }
 }
 
-variable "vCPU" {
-  type    = string
-  default = "2"
-}
-
-variable "RAM" {
-  type    = string
-  default = "8192" // AMOUNT_OF_MEMORY_MB Gb*1024=Mb
-}
-
-variable "VM_identifier" {
-  description = "The unique name for your instance"
-  type        = string
-}
-
 provider "google" {
   project     = "cosmic-reserve-307720"
   region      = "europe-west3"
@@ -30,7 +15,8 @@ provider "google" {
 
 
 resource "google_compute_instance" "DZ_Template_VM" {
-  name         = "vm-${var.VM_identifier}"
+  count={var.count}
+  name         = "vm-${count.index + 1}"
   machine_type = "custom-${var.vCPU}-${var.RAM}-ext" // custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB 2vCPU, 15GB RAM / 6.5GB RAM per CPU, if needed more + -ext
   
   tags = ["http-server","https-server"]
@@ -60,7 +46,7 @@ resource "google_compute_instance" "DZ_Template_VM" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt update",
-      "sudo apt install mc -y"
+      "sudo apt install mc -y",
     ]
     connection {
       type     = "ssh"
