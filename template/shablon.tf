@@ -55,3 +55,4 @@ resource "google_compute_instance" "DZ_Template_VM" {
       host        = self.network_interface[0].access_config[0].nat_ip
     }
   }
+}
