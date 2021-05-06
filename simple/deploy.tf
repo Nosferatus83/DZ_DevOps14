@@ -14,7 +14,7 @@ provider "google" {
 }
 
 resource "google_compute_instance" "DZ_DevOps14_Simple" {
-  name         = "DZ-DevOps14"
+  name         = "dz-devops14"
   machine_type = "e2-small" // 2vCPU, 2GB RAM
   #machine_type = "e2-medium" // 2vCPU, 4GB RAM
   allow_stopping_for_update = true
@@ -65,7 +65,7 @@ resource "google_compute_instance" "DZ_DevOps14_Simple" {
       host        = self.network_interface[0].access_config[0].nat_ip
     }
   }
-  
+
   provisioner "file" {
     source      = "Puzzle15.war"
     destination = "/var/lib/tomcat9/webapps/Puzzle15.war"
