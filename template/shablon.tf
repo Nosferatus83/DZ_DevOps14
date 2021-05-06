@@ -15,7 +15,7 @@ provider "google" {
 
 
 resource "google_compute_instance" "DZ_Template_VM" {
-  count=${var.kol}
+  count=2
   name         = "vm-${count.index + 1}"
   machine_type = "custom-${var.vCPU}-${var.RAM}-ext" // custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB 2vCPU, 15GB RAM / 6.5GB RAM per CPU, if needed more + -ext
   
