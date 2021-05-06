@@ -56,3 +56,16 @@ resource "google_compute_instance" "DZ_Template_VM" {
   metadata = {
     ssh-keys = "root:${file("/root/.ssh/id_rsa.pub")}" // Point to ssh public key for user root
   }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt update",
+      "sudo apt install mc -y"
+    ]
+    connection {
+      type     = "ssh"
+      user     = "root"
+      private_key = file("/root/.ssh/id_rsa")
+      host        = self.network_interface[0].access_config[0].nat_ip
+    }
+  }

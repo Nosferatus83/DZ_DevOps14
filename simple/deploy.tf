@@ -44,6 +44,7 @@ resource "google_compute_instance" "DZ_DevOps14_Simple" {
     inline = [
       "sudo apt update",
       "sudo apt install default-jre -y",
+      "sudo apt install mc -y",
       "sudo apt install nginx -y",
       "sudo apt install tomcat9 -y"
     ]
@@ -51,7 +52,7 @@ resource "google_compute_instance" "DZ_DevOps14_Simple" {
       type     = "ssh"
       user     = "root"
       private_key = file("/root/.ssh/id_rsa")
-      host        = self.network_interface[0].access_config[0].nat_ip
+      host        = self.network_interface[0].network_ip
     }
   }
 
@@ -62,7 +63,7 @@ resource "google_compute_instance" "DZ_DevOps14_Simple" {
       type     = "ssh"
       user     = "root"
       private_key = file("/root/.ssh/id_rsa")
-      host        = self.network_interface[0].access_config[0].nat_ip
+      host        = self.network_interface[0].network_ip
     }
   }
 
@@ -73,7 +74,7 @@ resource "google_compute_instance" "DZ_DevOps14_Simple" {
       type     = "ssh"
       user     = "root"
       private_key = file("/root/.ssh/id_rsa")
-      host        = self.network_interface[0].access_config[0].nat_ip
+      host        = self.network_interface[0].network_ip
     }
   }
 }
