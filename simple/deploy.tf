@@ -15,8 +15,9 @@ provider "google" {
 
 resource "google_compute_instance" "DZ_DevOps14_Simple" {
   name         = "dz-devops14"
-  machine_type = "e2-medium" // 2vCPU, 4GB RAM
-  tags = ["http-server","https-server"]
+  machine_type = "e2-small" // 2vCPU, 2GB RAM
+#  machine_type = "e2-medium" // 2vCPU, 4GB RAM
+#  tags = ["http-server","https-server"]
   allow_stopping_for_update = true
 
   boot_disk {
@@ -46,7 +47,7 @@ resource "google_compute_instance" "DZ_DevOps14_Simple" {
       "sudo apt install default-jre -y",
       "sudo apt install mc -y",
       "sudo apt install nginx -y",
-      "sudo apt install tomcat9 -y"
+      "sudo apt install tomcat9 -y",
     ]
     connection {
       type     = "ssh"
