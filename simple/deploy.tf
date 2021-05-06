@@ -17,7 +17,7 @@ resource "google_compute_instance" "DZ_DevOps14_Simple" {
   name         = "dz-devops14"
   machine_type = "e2-small" // 2vCPU, 2GB RAM
 #  machine_type = "e2-medium" // 2vCPU, 4GB RAM
-#  tags = ["http-server","https-server"]
+  tags = ["http-server","https-server","Apply to all"]
   allow_stopping_for_update = true
 
   boot_disk {
