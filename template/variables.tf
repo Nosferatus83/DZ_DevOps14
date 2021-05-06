@@ -1,4 +1,4 @@
-variable "count" {
+variable "kol" {
   description = "Count VM instance" 
   default = 1 // AMOUNT_OF_MEMORY_MB Gb*1024=Mb
 }
