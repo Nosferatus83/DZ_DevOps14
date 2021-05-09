@@ -1,14 +1,15 @@
-variable "kol" {
+variable "vm" {
   description = "Count VM instance" 
-  default = 1 // AMOUNT_OF_MEMORY_MB Gb*1024=Mb
+  type    = number
+  default = 2 
 }
 
-variable "vCPU" {
-  type    = string
-  default = "2"
+variable "cpu" {
+  type    = number
+  default = 2
 }
 
-variable "RAM" {
-  type    = string
-  default = "8192" // AMOUNT_OF_MEMORY_MB Gb*1024=Mb
+variable "ram" {
+  type    = number
+  default = 8 // AMOUNT_OF_MEMORY_MB Gb*1024=Mb
 }
