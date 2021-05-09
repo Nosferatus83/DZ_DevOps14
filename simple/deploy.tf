@@ -15,8 +15,8 @@ provider "google" {
 
 resource "google_compute_instance" "DZ_DevOps14_Simple" {
   name         = "dz-devops14"
-  machine_type = "e2-micro" // 2vCPU, 1GB RAM
-#  machine_type = "e2-small" // 2vCPU, 2GB RAM
+#  machine_type = "e2-micro" // 2vCPU, 1GB RAM
+  machine_type = "e2-small" // 2vCPU, 2GB RAM
 #  machine_type = "e2-medium" // 2vCPU, 4GB RAM
   tags = ["http-server","https-server"]
   allow_stopping_for_update = true
