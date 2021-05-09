@@ -44,6 +44,17 @@ resource "google_compute_instance" "DZ_DevOps14_Simple" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt update",
+    ]
+    connection {
+      type     = "ssh"
+      user     = "root"
+      private_key = file("/root/.ssh/id_rsa")
+      host        = self.network_interface[0].network_ip
+    }
+  }
+
+  provisioner "remote-exec" {
+    inline = [
       "sudo apt install default-jre -y",
       "sudo apt install mc -y",
       "sudo apt install nginx -y",
